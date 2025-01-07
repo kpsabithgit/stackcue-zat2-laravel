@@ -1,0 +1,25 @@
+{
+    "name": "sabith/stackcue-zat2-laravel",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sabith\\StackcueZat2Laravel\\Providers\\StackcueZat2ServiceProvider"
+            ],
+            "aliases": {
+                "StackcueZat2": "Sabith\\StackcueZat2Laravel\\Facades\\StackcueZat2"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sabith\\StackcueZat2Laravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kpsabithgit",
+            "email": "91092418+kpsabithgit@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
