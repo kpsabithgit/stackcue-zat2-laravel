@@ -32,7 +32,7 @@
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
+						<a class="sidebar-link" href="compliancecsid">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
@@ -62,8 +62,17 @@
 					</li>
 
 					<li class="sidebar-header">
-						Tools & Components
+					Certificates
 					</li>
+	
+
+<li class="sidebar-item">
+    <a class="sidebar-link" href="{{ route('compliance-csids.index') }}">
+        <i class="align-middle" data-feather="square"></i> 
+        <span class="align-middle">Compliance CSID</span>
+    </a>
+</li>
+
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="ui-buttons.html">
