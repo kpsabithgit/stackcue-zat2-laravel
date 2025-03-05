@@ -86,8 +86,8 @@ class PageController extends Controller
                 $satus = $stackcueHelper['overallStatus'];
                 $data = [
                     'cert_name' => Str::uuid(),
-                    'company_id' => app('stackcue-zat2')->getSaasCompanyId(),
-                    'user_id' => app('stackcue-zat2')->getuserID(),
+                    'company_id' => ConfigurationController::getSaasCompanyId(),
+                    'user_id' => ConfigurationController::getUserID(),
                     'common_name' => $request->input('commonName'),
                     'email' => $request->input('email'),
                     'location' => $request->input('location'),
@@ -169,7 +169,7 @@ class PageController extends Controller
         $invoice->stackcue()
             ->documentType($documenttype)
             ->stackcueComplianceIdentifier('3fb0acc9-27da-458a-a9a1-cc9583d351ad')
-            ->stackcueProductionIdentifier('0c2f3b77-e5a8-407e-81f4-63cc03e8db1f')
+            //->stackcueProductionIdentifier('0c2f3b77-e5a8-407e-81f4-63cc03e8db1f')
             ->qrX(55)
             ->qrY(120)
             ->qrSize(150);

@@ -2,12 +2,14 @@
 
 namespace Sabith\StackcueZat2Laravel\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Sabith\StackcueZat2Laravel\Traits\HasCompanyAndUser;
+use Sabith\StackcueZat2Laravel\Models\ZatcaStackcueProductionCsid;
 
 class ZatcaStackcueComplianceCsid extends Model
 {
-    use HasFactory;
+    use HasFactory,HasCompanyAndUser;
     
     protected $table = 'zatca_stackcue_compliance_csids'; 
     
@@ -22,6 +24,10 @@ class ZatcaStackcueComplianceCsid extends Model
     protected $casts = [
         'data' => 'array',
     ];
+
+    public function productioncsid(){
+       return $this->hasOne(ZatcaStackcueProductionCsid::class,'compliance_id');
+    }
 }
 //STACKCUE_API_END_POINT_BASE_URL =https://sandbox.stackcueprime.com
 //STACKCUE_API_ACCESS_TOKEN =10|cz8t9Mk9cI7ncKlfPxycMBQYpeneWocx3oWFrP1Yc7cfec86

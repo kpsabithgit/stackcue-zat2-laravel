@@ -6,26 +6,25 @@ use Sabith\StackcueZat2Laravel\Http\Controllers\StackueZat2ProductionCsidControl
 
 // Route::get('/stackcue-zat2', [PageController::class, 'simplifiedinvoice'])->name('stackcue-zat2');
 
-Route::prefix('stackcue-zat2')->group(function(){
+// Route::group(['middleware' => ['auth'], 'prefix' => 'stackcue-zat2'], function () {
+//     Route::get('/simplifiedinvoice', [PageController::class, 'simplifiedinvoice'])->name('simplifiedinvoice');
+//     Route::get('/simplifiedcreditnote', [PageController::class, 'simplifiedcreditnote'])->name('simplifiedcreditnote');
+//     Route::get('/simplifieddebitnote', [PageController::class, 'simplifieddebitnote'])->name('simplifieddebitnote');
 
-    Route::get('/simplifiedinvoice', [PageController::class, 'simplifiedinvoice'])->name('simplifiedinvoice');
-    Route::get('/simplifiedcreditnote', [PageController::class, 'simplifiedcreditnote'])->name('simplifiedcreditnote');
-    Route::get('/simplifieddebitnote', [PageController::class, 'simplifieddebitnote'])->name('simplifieddebitnote');
-
-    Route::get('/standardinvoice', [PageController::class, 'standardinvoice'])->name('standardinvoice');
-    Route::get('/standarddebitnote', [PageController::class, 'standarddebitnote'])->name('standarddebitnote');
-    Route::get('/samplecompliaincecheck/{id}', [StackueZat2ProductionCsidController::class, 'sampleComplianceCheck'])->name('samplecompliaincecheck.index');
+//     Route::get('/standardinvoice', [PageController::class, 'standardinvoice'])->name('standardinvoice');
+//     Route::get('/standarddebitnote', [PageController::class, 'standarddebitnote'])->name('standarddebitnote');
+//     Route::get('/samplecompliaincecheck/{id}', [StackueZat2ProductionCsidController::class, 'sampleComplianceCheck'])->name('samplecompliaincecheck.index');
 
 
-    Route::get('/productioncsid', [PageController::class, 'productioncsid'])->name('productioncsid');
- #
-    Route::get('/compliancecsid', [PageController::class, 'compliancecsid'])->name('compliancecsid');
-    Route::get('/compliance-csids', [PageController::class, 'index'])->name('compliance-csids.index');
+//     Route::get('/productioncsid', [PageController::class, 'productioncsid'])->name('productioncsid');
+ 
+//     Route::get('/compliancecsid', [PageController::class, 'compliancecsid'])->name('compliancecsid');
+//     Route::get('/compliance-csids', [PageController::class, 'index'])->name('compliance-csids.index');
 
-    Route::post('/submit-registration', [PageController::class, 'storeForm'])->name('submit.registration');
-    Route::delete('/compliance/{id}', [PageController::class, 'destroy'])->name('compliance.destroy');
-    Route::get('/compliance/{id}', [PageController::class, 'samplecompliaincecheck'])->name('compliance.samplecompliaincecheck');
-});
+//     Route::post('/submit-registration', [PageController::class, 'storeForm'])->name('submit.registration');
+//     Route::delete('/compliance/{id}', [PageController::class, 'destroy'])->name('compliance.destroy');
+//     Route::get('/compliance/{id}', [PageController::class, 'samplecompliaincecheck'])->name('compliance.samplecompliaincecheck');
+// });
 
 
 Route::get('stackcue-zat2-adminkit/{path}', function ($path) {

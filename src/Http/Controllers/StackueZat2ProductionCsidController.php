@@ -124,7 +124,6 @@ class StackueZat2ProductionCsidController extends Controller
     {
 
         $stackcueComplianceIdentifier = ZatcaStackcueComplianceCsid::where('id', $id)->first()->stackcue_compliance_identifier; //'74e88cd4-fc4a-46f9-afee-b2c4cb4d034a';
-        $stackcueProductionIdentifier = ZatcaStackcueComplianceCsid::where('id', $id)->first()->stackcueProductionIdentifier; //'74e88cd4-fc4a-46f9-afee-b2c4cb4d034a';
 
         $invoice = new Invoice();
 
@@ -138,9 +137,9 @@ class StackueZat2ProductionCsidController extends Controller
         // Invoice Section
         $invoice->invoice()
             ->id('SME00061')
-            ->issueDate('2022-09-07')
-            ->issueTime('12:21:28')
-            ->invoiceCounterValue(101)
+            ->issueDate(now()->format('Y-m-d'))
+            ->issueTime(now()->format('H:i:s'))
+            ->invoiceCounterValue(1)
             ->actualDeliveryDate('2022-09-07')
             ->paymentMeansCode(10)
             ->PIHvalue('NWZlY2ViNjZmZmM4NmYzOGQ5NTI3ODZjNmQ2OTZjNzljMmRiYzIzOWRkNGU5MWI0NjcyOWQ3M2EyN2ZiNTdlOQ==')
