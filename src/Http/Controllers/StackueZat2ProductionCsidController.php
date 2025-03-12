@@ -9,6 +9,7 @@ use Sabith\Zatcaphase2\Invoice;
 use App\Http\Controllers\Controller;
 use Sabith\Zatcaphase2\ComplianceCSID;
 use Sabith\Zatcaphase2\ProductionCSID;
+use App\Http\Controllers\Einvoicing\ZatcaController;
 use Sabith\StackcueZat2Laravel\Models\ZatcaStackcueComplianceCsid;
 use Sabith\StackcueZat2Laravel\Models\ZatcaStackcueProductionCsid;
 
@@ -123,7 +124,9 @@ class StackueZat2ProductionCsidController extends Controller
     public static function execute($documenttype, $id)
     {
 
-        $stackcueComplianceIdentifier = ZatcaStackcueComplianceCsid::where('id', $id)->first()->stackcue_compliance_identifier; //'74e88cd4-fc4a-46f9-afee-b2c4cb4d034a';
+        $ZatcaStackcueComplianceCsid = ZatcaStackcueComplianceCsid::where('id', $id)->first();
+        $stackcueComplianceIdentifier = $ZatcaStackcueComplianceCsid->stackcue_compliance_identifier; //'74e88cd4-fc4a-46f9-afee-b2c4cb4d034a';
+        $sellerDetailsforonboarding = ConfigurationController::sellerDetailsforonboarding();
 
         $invoice = new Invoice();
 
@@ -136,11 +139,11 @@ class StackueZat2ProductionCsidController extends Controller
 
         // Invoice Section
         $invoice->invoice()
-            ->id('SME00061')
+            ->id('TESTINVOICE01')
             ->issueDate(now()->format('Y-m-d'))
             ->issueTime(now()->format('H:i:s'))
             ->invoiceCounterValue(1)
-            ->actualDeliveryDate('2022-09-07')
+            ->actualDeliveryDate(now()->format('Y-m-d'))
             ->paymentMeansCode(10)
             ->PIHvalue('NWZlY2ViNjZmZmM4NmYzOGQ5NTI3ODZjNmQ2OTZjNzljMmRiYzIzOWRkNGU5MWI0NjcyOWQ3M2EyN2ZiNTdlOQ==')
             ->referanceInvoiceID('SMI00023')
@@ -148,16 +151,16 @@ class StackueZat2ProductionCsidController extends Controller
 
         // Seller Section
         $invoice->seller()
-            ->partyIdentificationId('454634645645654')
+            ->partyIdentificationId($sellerDetailsforonboarding['partyIdentificationId'])
             ->partyIdentificationIdType('CRN')
-            ->streetName('Riyadh')
-            ->buildingNumber('2322')
-            ->plotIdentification('2223')
-            ->citySubdivisionName('Riyad')
-            ->cityName('Riyadh')
-            ->postalZone('23333')
-            ->companyID('399999999900003')
-            ->registrationName('Acme Widgets LTD');
+            ->streetName($sellerDetailsforonboarding['streetName'])
+            ->buildingNumber($sellerDetailsforonboarding['buildingNumber'])
+            //->plotIdentification('2223')
+            ->citySubdivisionName($sellerDetailsforonboarding['citySubdivisionName'])
+            ->cityName($sellerDetailsforonboarding['cityName'])
+            ->postalZone($sellerDetailsforonboarding['postalZone'])
+            ->companyID($ZatcaStackcueComplianceCsid->vat_number)
+            ->registrationName($ZatcaStackcueComplianceCsid->company_name);
 
         // Customer Section
         $invoice->customer()

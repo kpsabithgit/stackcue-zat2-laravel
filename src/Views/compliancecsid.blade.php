@@ -160,9 +160,27 @@ $(document).ready(function() {
                     });
                 }
             },
-            error: function(xhr) {
-                // Display error message
+            error: function(xhr, status, error) {
+                // Log the error details to the console
+                console.log("Status: " + status);
+                console.log("Error: " + error);
+                console.log("xhr object: ", xhr);
+
+                // Display a generic error message to the user
                 $('#errorMessage').text('Something went wrong. Please try again.').show();
+
+                // Optionally, display more detailed error information
+                if (xhr.responseText) {
+                    console.log("Response Text: " + xhr.responseText);
+                    $('#errorMessage').append('<br>Details: ' + xhr.responseText);
+                }
+
+                // Check the status code for specific error handling
+                if (xhr.status === 404) {
+                    $('#errorMessage').text('The requested resource was not found.');
+                } else if (xhr.status === 500) {
+                    $('#errorMessage').text('Internal server error. Please try again later.');
+                }
             }
         });
     });

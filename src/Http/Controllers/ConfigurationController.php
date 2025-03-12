@@ -18,4 +18,9 @@ class ConfigurationController extends Controller{
         return ZatcaController::companyAnduser()['user_id'];
         //return app('stackcue-zat2')->getUserID(); // managed by parent application. read readme for more info.
     }
+
+    public static function sellerDetailsforonboarding(){
+        return ZatcaController::sellerDetailsforonboarding();
+
+    }
 }
