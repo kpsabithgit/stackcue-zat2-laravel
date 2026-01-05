@@ -32,7 +32,7 @@ class StackcueZat2ServiceProvider extends ServiceProvider
 
     public function register()
     {
-        Log::info('StackcueZat2ServiceProvider registered.');
+        //Log::info('StackcueZat2ServiceProvider registered.');
 
         $this->app->singleton('stackcue-zat2', function ($app) {
             return new StackcueZat2Manager();
